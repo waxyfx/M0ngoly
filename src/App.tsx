@@ -9,6 +9,7 @@ import MilitarySystem from "./components/MilitarySystem";
 import EmpireMap from "./components/EmpireMap";
 import OtyrarSection from "./components/OtyrarSection";
 import SonsSection from "./components/SonsSection";
+import DynastyTransition from "./components/DynastyTransition";
 import UlusMap from "./components/UlusMap";
 import KazakhstanSection from "./components/KazakhstanSection";
 import LegacySection from "./components/LegacySection";
@@ -18,6 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const root = useRef<HTMLDivElement>(null);
+  const [activeUlus, setActiveUlus] = useState<number | null>(null);
   const [military, setMilitary] = useState(0),
     [mapStep, setMapStep] = useState(0),
     [month, setMonth] = useState(1);
@@ -205,10 +207,11 @@ export default function App() {
             scrollTrigger: scene("#siege"),
           });
           gsap.from(".son-card", {
-            y: 70,
-            clipPath: "inset(0 0 100% 0)",
+            y: 18,
+            opacity: 0,
             stagger: 0.12,
-            duration: 1,
+            duration: 0.7,
+            clearProps: "transform,opacity",
             ease: "power3.out",
             scrollTrigger: { trigger: ".sons-grid", start: "top 85%" },
           });
@@ -349,8 +352,9 @@ export default function App() {
         <EmpireMap step={mapStep} onSelect={setMapStep} />
         <MapTransition />
         <OtyrarSection month={month} />
-        <SonsSection />
-        <UlusMap />
+        <DynastyTransition />
+        <SonsSection active={activeUlus} onSelect={setActiveUlus} />
+        <UlusMap active={activeUlus} onSelect={setActiveUlus} />
         <KazakhstanSection />
         <LegacySection />
         <FinalSection />

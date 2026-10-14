@@ -1,9 +1,10 @@
-import { useState } from "react";
 import { BaseMap, region, ulusRegions } from "./EmpireMap";
 import { sons } from "./SonsSection";
 import { asset } from "../assets";
-export default function UlusMap() {
-  const [active, setActive] = useState<number | null>(null);
+export default function UlusMap({ active, onSelect: setActive }: {
+  active: number | null;
+  onSelect: (index: number | null) => void;
+}) {
   return (
     <>
       <section id="ulus" className="ulus-scroll">
