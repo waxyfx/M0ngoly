@@ -1,0 +1,46 @@
+name: Fetch historical images
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/fetch-historical-images.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download public-domain historical images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/images/historical
+
+          curl -L --fail --retry 3             "https://upload.wikimedia.org/wikipedia/commons/4/4e/Genghis_Khan.jpg"             -o public/images/historical/genghis-khan.jpg
+
+          curl -L --fail --retry 3             "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Jochi_becomes_Khan.jpg/960px-Jochi_becomes_Khan.jpg"             -o public/images/historical/jochi-khan.jpg
+
+          curl -L --fail --retry 3             "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Chagatai_Khan_and_His_Consort%2C_J%C4%81mi%CA%BF_al-tav%C4%81r%C4%ABkh_of_Rashid_al-Din%2C_Iran%2C_fourteenth_century_%28manuscript%29%2C_India%2C_c._1590%E2%80%931595_%28painting%29.jpg/960px-Chagatai_Khan_and_His_Consort%2C_J%C4%81mi%CA%BF_al-tav%C4%81r%C4%ABkh_of_Rashid_al-Din%2C_Iran%2C_fourteenth_century_%28manuscript%29%2C_India%2C_c._1590%E2%80%931595_%28painting%29.jpg"             -o public/images/historical/chagatai-khan.jpg
+
+          curl -L --fail --retry 3             "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/YuanEmperorAlbumOgedeiPortrait.jpg/500px-YuanEmperorAlbumOgedeiPortrait.jpg"             -o public/images/historical/ogedei-khan.jpg
+
+          curl -L --fail --retry 3             "https://upload.wikimedia.org/wikipedia/commons/8/85/Tolui_Khan.jpg"             -o public/images/historical/tolui-khan.jpg
+
+      - name: Commit images
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/images/historical
+          if git diff --cached --quiet; then
+            echo "No image changes to commit."
+            exit 0
+          fi
+          git commit -m "Add historical portraits of Genghis Khan and his sons"
+          git push
