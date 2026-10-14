@@ -1,28 +1,30 @@
+import { asset, genghisPortrait } from "../assets";
+
 export const sons = [
   {
     name: "ЖОШЫ",
-    image: "jochi",
+    image: asset("images/portraits/jochi.jpeg"),
     subtitle: "Үлкен ұл",
     territory: "Ертістен батысқа қарайғы ұлан-ғайыр аумақ",
     color: "#C69A45",
   },
   {
     name: "ШАҒАТАЙ",
-    image: "chagatai",
+    image: asset("images/portraits/chagatai.jpeg"),
     subtitle: "Екінші ұл",
     territory: "Жетісудың бір бөлігі, Шығыс Түркістан және Мәуереннахр",
     color: "#A9442D",
   },
   {
     name: "ҮГЕДЕЙ",
-    image: "ogedei",
+    image: asset("images/portraits/ogedei.jpeg"),
     subtitle: "Үшінші ұл",
     territory: "Батыс Моңғолия, Жоғарғы Ертіс және Тарбағатай",
     color: "#3A7182",
   },
   {
     name: "ТӨЛЕ",
-    image: "tolui",
+    image: asset("images/portraits/tolui.jpeg"),
     subtitle: "Кенже ұл",
     territory: "Моңғолияның негізгі бөлігі",
     color: "#6D624D",
@@ -45,7 +47,7 @@ export default function SonsSection() {
       </div>
       <figure className="father-portrait">
         <img
-          src="/images/genghis.jpg"
+          src={genghisPortrait}
           alt="Шыңғыс ханның тарихи портреті"
           loading="lazy"
         />
@@ -66,8 +68,8 @@ export default function SonsSection() {
             <div className="son-image">
               <span className="son-order">0{i + 1}</span>
               <img
-                src={"/images/" + son.image + ".jpg"}
-                alt={son.name + " — тарихи қолжазбадағы портрет"}
+                src={son.image}
+                alt={son.name + " — портрет"}
                 loading="lazy"
               />
               <span className="portrait-caption">ТАРИХИ БЕЙНЕ</span>

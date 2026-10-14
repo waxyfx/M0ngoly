@@ -95,50 +95,15 @@ export default function FinalSection() {
             <div>
               <h3>Көрнекі материалдар</h3>
               <p>
-                Темүжін, дала және қамал бейнелері — жасанды интеллект көмегімен
+                Дала және қамал бейнелері — жасанды интеллект көмегімен
                 жасалған көркем реконструкциялар. Олар түпнұсқа тарихи портрет
                 немесе нақты археологиялық реконструкция емес.
               </p>
               <p>
-                Әулет портреттері: ашық тарихи қолжазбалар мен Юань дәуірі
-                портреттерінің кейінгі көшірмелері. Географиялық негіз: Natural
+                Темүжін / Шыңғыс хан және оның төрт ұлының портреттері — жоба
+                авторы ұсынған суреттер. Географиялық негіз: Natural
                 Earth, қоғамдық игілік. Саяси шекаралар — шартты сызба.
               </p>
-              <a
-                href="https://commons.wikimedia.org/wiki/File:YuanEmperorAlbumGenghisPortrait.jpg"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Шыңғыс хан портреті ↗
-              </a>
-              <a
-                href="https://commons.wikimedia.org/wiki/File:Juchi_Khan_(cropped).JPG"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Жошы портреті ↗
-              </a>
-              <a
-                href="https://commons.wikimedia.org/wiki/File:Chagatai_Khan_(cropped).JPG"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Шағатай портреті ↗
-              </a>
-              <a
-                href="https://commons.wikimedia.org/wiki/File:YuanEmperorAlbumOgedeiPortrait.jpg"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Үгедей портреті ↗
-              </a>
-              <a
-                href="https://commons.wikimedia.org/wiki/File:Tolui_Khan.jpg"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Төле портреті ↗
-              </a>
               <a
                 href="https://commons.wikimedia.org/wiki/File:Batu_Khan_on_the_Throne_by_Rashid_al-Din_(cropped).jpg"
                 target="_blank"

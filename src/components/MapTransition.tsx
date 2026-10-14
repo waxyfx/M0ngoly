@@ -1,9 +1,10 @@
 import { BaseMap, MapCity } from "./EmpireMap";
+import { asset } from "../assets";
 export function ArchiveMap() {
   return (
     <figure className="archive-map">
       <img
-        src="/images/old-map.jpg"
+        src={asset("images/old-map.jpg")}
         alt="Әл-Идриси картографиясы дәстүріндегі Еуразия мен оған іргелес өңірлер картасының қолжазба үзіндісі"
         loading="lazy"
       />

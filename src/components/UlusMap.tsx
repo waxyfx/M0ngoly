@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BaseMap, region, ulusRegions } from "./EmpireMap";
 import { sons } from "./SonsSection";
+import { asset } from "../assets";
 export default function UlusMap() {
   const [active, setActive] = useState<number | null>(null);
   return (
@@ -42,7 +43,7 @@ export default function UlusMap() {
                 aria-label={s.name + " ұлысын көрсету"}
               >
                 <img
-                  src={"/images/" + s.image + ".jpg"}
+                  src={s.image}
                   alt=""
                   loading="lazy"
                 />
@@ -183,7 +184,7 @@ export default function UlusMap() {
         <figure className="batu-portrait">
           <div className="batu-orbit" />
           <img
-            src="/images/batu.jpg"
+            src={asset("images/batu.jpg")}
             alt="Тақта отырған Бату хан — Рашид ад-Дин қолжазбасындағы миниатюра"
             loading="lazy"
           />

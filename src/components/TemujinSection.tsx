@@ -1,3 +1,5 @@
+import { genghisPortrait } from "../assets";
+
 export default function TemujinSection() {
   return (
     <section id="temujin" className="section temujin-section">
@@ -10,11 +12,11 @@ export default function TemujinSection() {
           <div className="portrait-ring" />
           <img
             className="temujin-portrait"
-            src="/images/temujin.png"
-            alt="Жас Темүжіннің тарихи көркем реконструкциясы"
+            src={genghisPortrait}
+            alt="Темүжін — Шыңғыс ханның портреті"
             loading="lazy"
           />
-          <figcaption>ТАРИХИ КӨРКЕМ РЕКОНСТРУКЦИЯ</figcaption>
+          <figcaption>ТЕМҮЖІН — ШЫҢҒЫС ХАН</figcaption>
           <span className="image-index">I.</span>
         </figure>
         <div className="temujin-copy">

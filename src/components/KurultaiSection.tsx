@@ -1,3 +1,5 @@
+import { genghisPortrait } from "../assets";
+
 export default function KurultaiSection() {
   return (
     <section id="kurultai" className="kurultai-scroll">
@@ -14,8 +16,8 @@ export default function KurultaiSection() {
         </div>
         <div className="khan-reveal">
           <img
-            src="/images/genghis.jpg"
-            alt="Шыңғыс ханның Юань дәуірінің дәстүріндегі портреті"
+            src={genghisPortrait}
+            alt="Шыңғыс ханның портреті"
             loading="lazy"
           />
           <span className="eyebrow">ЖАҢА ЕСІМ. ЖАҢА ДӘУІР.</span>
