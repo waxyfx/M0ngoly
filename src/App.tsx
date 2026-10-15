@@ -10,6 +10,7 @@ import EmpireMap from "./components/EmpireMap";
 import OtyrarSection from "./components/OtyrarSection";
 import SonsSection from "./components/SonsSection";
 import DynastyTransition from "./components/DynastyTransition";
+import BackgroundMusic from "./components/BackgroundMusic";
 import UlusMap from "./components/UlusMap";
 import KazakhstanSection from "./components/KazakhstanSection";
 import LegacySection from "./components/LegacySection";
@@ -20,6 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function App() {
   const root = useRef<HTMLDivElement>(null);
   const [activeUlus, setActiveUlus] = useState<number | null>(null);
+  const [heroFilmActive, setHeroFilmActive] = useState(false);
   const [military, setMilitary] = useState(0),
     [mapStep, setMapStep] = useState(0),
     [month, setMonth] = useState(1);
@@ -45,6 +47,7 @@ export default function App() {
         (context) => {
           const { motion, desktop } = context.conditions!;
           if (!motion) {
+            setHeroFilmActive(true);
             setMilitary(3);
             setMapStep(7);
             setMonth(6);
@@ -56,15 +59,19 @@ export default function App() {
             end: "bottom bottom",
             scrub: 1,
           });
-          const hero = gsap.timeline({ scrollTrigger: scene("#start") });
+          setHeroFilmActive(false);
+          const hero = gsap.timeline({
+            scrollTrigger: scene("#start"),
+            onUpdate: () => setHeroFilmActive(hero.progress() >= 0.7),
+          });
           hero
             .to(".hero-copy", { opacity: 0.15, scale: 1.08, duration: 0.3 }, 0)
             .to(".hero-photo", { scale: 1.1, duration: 1 }, 0)
             .fromTo(
               ".tribe",
               { opacity: 0, x: (i) => [-200, 200, -120, 180, -100][i], y: 60 },
-              { opacity: 0.85, x: 0, y: 0, stagger: 0.035, duration: 0.3 },
-              0.2,
+              { opacity: 0.85, x: 0, y: 0, stagger: 0.025, duration: 0.2 },
+              0.15,
             )
             .to(
               ".tribe",
@@ -73,17 +80,11 @@ export default function App() {
                 y: (i) => [130, 100, -50, -70, -120][i],
                 opacity: 0,
                 stagger: 0.015,
-                duration: 0.3,
+                duration: 0.18,
               },
-              0.6,
+              0.43,
             )
-            .to(".hero-copy", { opacity: 0, duration: 0.1 }, 0.6)
-            .fromTo(
-              ".hero-next",
-              { opacity: 0, y: 40, filter: "blur(12px)" },
-              { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3 },
-              0.7,
-            );
+            .to(".hero-copy", { opacity: 0, duration: 0.1 }, 0.43);
           gsap.fromTo(
             ".temujin-portrait",
             { y: desktop ? 65 : 0, scale: 1.08 },
@@ -343,8 +344,9 @@ export default function App() {
   return (
     <div ref={root}>
       <Header />
+      <BackgroundMusic />
       <main>
-        <Hero />
+        <Hero filmActive={heroFilmActive} />
         <TemujinSection />
         <KurultaiSection />
         <MilitarySystem step={military} onSelect={setMilitary} />

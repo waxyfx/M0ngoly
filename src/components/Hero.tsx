@@ -1,4 +1,6 @@
-export default function Hero() {
+import LokiFilm from "./LokiFilm";
+
+export default function Hero({ filmActive }: { filmActive: boolean }) {
   return (
     <section id="start" className="hero-scroll" aria-label="Бөлінген дала">
       <div className="sticky-stage hero-stage">
@@ -30,9 +32,9 @@ export default function Hero() {
             </span>
           ))}
         </div>
-        <div className="hero-next">
-          <span className="eyebrow">ДАЛА ТАРИХЫ ӨЗГЕРЕР СӘТ</span>
-          <h2>ТЕМҮЖІН</h2>
+        <div className={"hero-film-stage " + (filmActive ? "is-active" : "")} aria-hidden={!filmActive} inert={!filmActive}>
+          <span className="eyebrow hero-film-label">ДАЛА ТАРИХЫ ӨЗГЕРЕР СӘТ</span>
+          <LokiFilm active={filmActive} />
         </div>
         <div className="hero-bottom">
           <div>
